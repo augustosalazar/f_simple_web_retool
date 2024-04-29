@@ -16,24 +16,24 @@ class UserController extends GetxController {
     super.onInit();
   }
 
-  void getUsers() async {
+  Future<void>  getUsers() async {
     logInfo("Getting users");
     _users.value = await userUseCase.getUsers();
   }
 
-  void addUser(User user) async {
+  Future<void>  addUser(User user) async {
     logInfo("Add user");
     await userUseCase.addUser(user);
     getUsers();
   }
 
-  void updateUser(User user) async {
+  Future<void> updateUser(User user) async {
     logInfo("Update user");
     await userUseCase.updateUser(user);
     getUsers();
   }
 
-  void deleteUser(int id) async {
+  Future<void>  deleteUser(int id) async {
     logInfo("deleteUser user $id");
     await userUseCase.deleteUser(id);
     getUsers();
