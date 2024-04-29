@@ -25,7 +25,7 @@ class UserDataSource implements IUserDataSource {
       //logInfo(response.body);
       final data = jsonDecode(response.body);
 
-      users = List<User>.from(data.map((x) => User.fromJson(x)));
+      users = List<User>.from(data.skip(1).map((x) => User.fromJson(x)));
     } else {
       logError("Got error code ${response.statusCode}");
       return Future.error('Error code ${response.statusCode}');
