@@ -2,7 +2,7 @@ import 'package:f_simple_web_retool/data/repositories/repository.dart';
 import 'package:f_simple_web_retool/domain/models/user.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../user_test.mocks.mocks.dart';
+import '../../mocks/user_test.mocks.mocks.dart';
 
 void main() {
   late UserRepository userRepository;

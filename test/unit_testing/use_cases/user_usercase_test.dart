@@ -3,7 +3,7 @@ import 'package:f_simple_web_retool/domain/use_case/user_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../user_test.mocks.mocks.dart';
+import '../../mocks/user_test.mocks.mocks.dart';
 
 // Mock class
 //class MockUserRepository extends Mock implements IUserRepository {}
