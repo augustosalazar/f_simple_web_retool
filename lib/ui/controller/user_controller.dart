@@ -12,29 +12,30 @@ class UserController extends GetxController {
 
   @override
   void onInit() {
-    getUers();
+    getUsers();
     super.onInit();
   }
 
-  getUers() async {
+  void getUsers() async {
     logInfo("Getting users");
     _users.value = await userUseCase.getUsers();
   }
 
-  addUser(User user) async {
+  void addUser(User user) async {
     logInfo("Add user");
     await userUseCase.addUser(user);
-    getUers();
+    getUsers();
   }
 
-  updateUser(User user) async {
+  void updateUser(User user) async {
     logInfo("Update user");
     await userUseCase.updateUser(user);
-    getUers();
+    getUsers();
   }
 
   void deleteUser(int id) async {
+    logInfo("deleteUser user $id");
     await userUseCase.deleteUser(id);
-    getUers();
+    getUsers();
   }
 }
