@@ -46,7 +46,7 @@ void main() {
     print('deleteUser: ${createdUser.id}');
     // Step 4: Delete the entry
     bool deleteResult = await dataSource
-        .deleteUser(createdUser!.id!); // Assert non-null ID with '!'
+        .deleteUser(createdUser.id!); // Assert non-null ID with '!'
     expect(deleteResult, isTrue);
   });
 }

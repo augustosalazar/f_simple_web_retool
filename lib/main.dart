@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:loggy/loggy.dart';
 
 import 'data/datasources/remote/user_datasource.dart';
-import 'data/repositories/repository.dart';
+import 'data/repositories/user_repository.dart';
 import 'domain/use_case/user_usecase.dart';
 import 'ui/controller/user_controller.dart';
 import 'ui/my_app.dart';
