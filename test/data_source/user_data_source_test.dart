@@ -8,18 +8,10 @@ import 'dart:convert';
 
 import '../mocks/user_test.mocks.mocks.dart';
 
-//class MockHttpClient extends Mock implements http.Client {}
 @GenerateMocks([http.Client])
 void main() {
-  //late MockHttpClient
-  //    mockHttpClient; // Declare as late to ensure it's non-nullable
   late UserDataSource dataSource; // Same for dataSource
   const String apiKey = 'qtDGZS'; // Ensure apiKey is properly declared
-
-  setUpAll(() {
-    //mockHttpClient = MockHttpClient();
-    // Use the mockHttpClient defined above
-  });
 
   group('UserDataSource Tests', () {
     final Uri usersUri = Uri.parse("https://retoolapi.dev/$apiKey/data");
@@ -59,31 +51,35 @@ void main() {
       expect(result, isTrue);
     });
 
-      test('updateUser returns true when a user is successfully updated',
-          () async {
-        when(mockHttpClient.put(Uri.parse("https://retoolapi.dev/$apiKey/data/1"),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      }, body: anyNamed('body')))
-            .thenAnswer((_) async => http.Response('', 200));
+    test('updateUser returns true when a user is successfully updated',
+        () async {
+      when(mockHttpClient.put(Uri.parse("https://retoolapi.dev/$apiKey/data/1"),
+              headers: <String, String>{
+                'Content-Type': 'application/json; charset=UTF-8',
+              },
+              body: anyNamed('body')))
+          .thenAnswer((_) async => http.Response('', 200));
 
-        bool result = await dataSource.updateUser(User(
-            id: 1,
-            firstName: 'Jane',
-            lastName: 'Doe',
-            email: 'jane.update@example.com'));
+      bool result = await dataSource.updateUser(User(
+          id: 1,
+          firstName: 'Jane',
+          lastName: 'Doe',
+          email: 'jane.update@example.com'));
 
-        expect(result, isTrue);
-      });
+      expect(result, isTrue);
+    });
 
-      test('deleteUser returns true when a user is successfully deleted',
-          () async {
-        when(mockHttpClient.delete(usersUri, headers: anyNamed('headers')))
-            .thenAnswer((_) async => http.Response('', 201));
+    test('deleteUser returns true when a user is successfully deleted',
+        () async {
+      when(mockHttpClient.delete(
+          Uri.parse("https://retoolapi.dev/$apiKey/data/1"),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          })).thenAnswer((_) async => http.Response('', 200));
 
-        bool result = await dataSource.deleteUser(1);
+      bool result = await dataSource.deleteUser(1);
 
-        expect(result, isTrue);
-      });
+      expect(result, isTrue);
+    });
   });
 }

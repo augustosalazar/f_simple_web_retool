@@ -41,9 +41,7 @@ void main() {
     createdUser!.firstName =
         'Updated'; // Safe because createdUser is not null here
     bool updateResult = await dataSource.updateUser(createdUser);
-    print('updateResult: $updateResult');
     expect(updateResult, isTrue);
-    print('deleteUser: ${createdUser.id}');
     // Step 4: Delete the entry
     bool deleteResult = await dataSource
         .deleteUser(createdUser.id!); // Assert non-null ID with '!'
