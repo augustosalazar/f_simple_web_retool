@@ -11,7 +11,7 @@ void main() {
   late MockHttpClient
       mockHttpClient; // Declare as late to ensure it's non-nullable
   late UserDataSource dataSource; // Same for dataSource
-  final String apiKey = 'qtDGZS'; // Ensure apiKey is properly declared
+  const String apiKey = 'qtDGZS'; // Ensure apiKey is properly declared
 
   setUp(() {
     mockHttpClient = MockHttpClient();

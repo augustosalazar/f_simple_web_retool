@@ -65,7 +65,7 @@ class UserDataSource implements IUserDataSource {
       body: jsonEncode(user.toJson()),
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       //logInfo(response.body);
       return Future.value(true);
     } else {
@@ -82,8 +82,8 @@ class UserDataSource implements IUserDataSource {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
-    logInfo("Deleting user with id $id");
-    if (response.statusCode == 201) {
+    logInfo("Deleting user with id $id status code ${response.statusCode}");
+    if (response.statusCode == 200) {
       //logInfo(response.body);
       return Future.value(true);
     } else {
